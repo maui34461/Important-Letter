@@ -96,6 +96,9 @@
             transition: all 0.6s ease;
             transform-origin: top center;
             border-bottom: 2px solid #9d8b7e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .envelope-flap::before {
@@ -110,6 +113,35 @@
                 rgba(0, 0, 0, 0.05) 2px,
                 rgba(0, 0, 0, 0.05) 4px
             );
+        }
+
+        /* Envelope Seal */
+        .envelope-seal {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #e8c4a8, #c98b76);
+            border-radius: 50%;
+            top: 35px;
+            left: 125px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .envelope-seal::after {
+            content: '♥';
+            position: absolute;
+        }
+
+        .envelope.opened .envelope-seal {
+            opacity: 0;
+            transform: scale(0.5);
         }
 
         .envelope.opened .envelope-flap {
@@ -357,7 +389,9 @@
         <div class="title">✦ Important Letter ✦</div>
         <div class="envelope-container">
             <div class="envelope" id="envelope">
-                <div class="envelope-flap"></div>
+                <div class="envelope-flap">
+                    <div class="envelope-seal"></div>
+                </div>
                 <div class="envelope-body">
                     <div class="message-content">
                         <div class="message-preview">
