@@ -18,13 +18,13 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #a8d5ba 0%, #d4e8d4 100%);
+            background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%);
             padding: 20px;
             transition: background 3s ease;
         }
 
         body.letter-open {
-            background: linear-gradient(135deg, #1a2634 0%, #2a3f52 100%);
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
         }
 
         .stars-container {
@@ -68,37 +68,68 @@
         }
 
         .envelope {
-            width: 300px;
-            height: 200px;
-            background: linear-gradient(135deg, #f5f3f0 0%, #faf9f7 100%);
-            border: 3px solid #9d8b7e;
-            border-radius: 2px;
+            width: 350px;
+            height: 220px;
+            background: linear-gradient(to bottom, #f8f6f3 0%, #faf9f7 100%);
+            border: 4px solid #2c2416;
+            border-radius: 3px;
             position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
             margin: 0 auto;
+            overflow: hidden;
         }
 
         .envelope:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
-        .envelope-flap {
-            width: 300px;
-            height: 100px;
-            background: linear-gradient(to bottom, #d9a892 0%, #c98b76 100%);
-            position: absolute;
-            top: 0;
-            left: 0;
-            clip-path: polygon(0 0, 50% 50%, 100% 0);
-            transition: all 0.6s ease;
-            transform-origin: top center;
-            border-bottom: 2px solid #9d8b7e;
+        /* Envelope front body */
+        .envelope-front {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #f8f6f3 0%, #faf9f7 100%);
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .envelope-front::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.01) 2px,
+                    rgba(0, 0, 0, 0.01) 4px
+                );
+            pointer-events: none;
+        }
+
+        /* Envelope Flap */
+        .envelope-flap {
+            width: 350px;
+            height: 110px;
+            background: linear-gradient(to bottom, #d4a574 0%, #c9935f 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            clip-path: polygon(0 0, 50% 60%, 100% 0);
+            transition: all 0.6s ease;
+            transform-origin: top center;
+            border-bottom: 2px solid #2c2416;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 3;
         }
 
         .envelope-flap::before {
@@ -113,25 +144,27 @@
                 rgba(0, 0, 0, 0.05) 2px,
                 rgba(0, 0, 0, 0.05) 4px
             );
+            pointer-events: none;
         }
 
         /* Envelope Seal */
         .envelope-seal {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle at 30% 30%, #e8c4a8, #c98b76);
+            width: 55px;
+            height: 55px;
+            background: radial-gradient(circle at 30% 30%, #e8c4a8, #c9935f);
             border-radius: 50%;
-            top: 35px;
-            left: 125px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+            top: 40px;
+            left: calc(50% - 27.5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.25);
             z-index: 10;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
+            font-size: 28px;
             color: #fff;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+            transition: all 0.6s ease;
         }
 
         .envelope-seal::after {
@@ -141,48 +174,21 @@
 
         .envelope.opened .envelope-seal {
             opacity: 0;
-            transform: scale(0.5);
+            transform: scale(0.3) rotateZ(180deg);
         }
 
         .envelope.opened .envelope-flap {
-            transform: rotateX(180deg);
-            z-index: -1;
-        }
-
-        .envelope-body {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #f5f3f0 0%, #faf9f7 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #4a4238;
-            position: relative;
-        }
-
-        .envelope-body::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 0, 0, 0.02) 2px,
-                    rgba(0, 0, 0, 0.02) 4px
-                );
-            pointer-events: none;
+            transform: rotateX(170deg);
+            z-index: 1;
         }
 
         .message-content {
             opacity: 0;
             transition: opacity 0.6s ease 0.3s;
-            max-width: 280px;
-            padding: 20px;
+            max-width: 300px;
+            padding: 25px;
             line-height: 1.6;
-            max-height: 180px;
+            max-height: 200px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -196,18 +202,20 @@
         }
 
         .message-preview {
-            font-size: 14px;
-            color: #6b5d52;
+            font-size: 16px;
+            color: #3a3430;
             font-style: italic;
             font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
 
         .tap-instruction {
-            font-size: 14px;
-            color: #8b7d6b;
+            font-size: 15px;
+            color: #5a5450;
             margin-top: 20px;
             animation: pulse 2s infinite;
             font-style: italic;
+            font-weight: 500;
         }
 
         body.letter-open .tap-instruction {
@@ -225,10 +233,10 @@
 
         .reset-button {
             margin-top: 20px;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #c9a892 0%, #b8935f 100%);
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #c9a574 0%, #b8935f 100%);
             color: #faf9f7;
-            border: 2px solid #9d8b7e;
+            border: 2px solid #2c2416;
             border-radius: 0;
             cursor: pointer;
             font-weight: bold;
@@ -246,39 +254,40 @@
         }
 
         .reset-button:hover {
-            background: linear-gradient(135deg, #d9a892 0%, #c98b76 100%);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #d4a574 0%, #c9935f 100%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
 
         .title {
-            color: #8b7d6b;
-            font-size: 32px;
+            color: #3a3430;
+            font-size: 36px;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             font-family: 'Playfair Display', serif;
             letter-spacing: 3px;
             text-transform: uppercase;
             transition: color 0.6s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
 
         body.letter-open .title {
-            color: #c0d4dc;
+            color: #d0dce8;
         }
 
         .full-message {
-            background: linear-gradient(135deg, #f5f3f0 0%, #faf9f7 100%);
-            border: 3px solid #9d8b7e;
+            background: linear-gradient(to bottom, #f8f6f3 0%, #faf9f7 100%);
+            border: 4px solid #2c2416;
             border-radius: 0;
             padding: 50px 40px;
             margin-top: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
             text-align: left;
             max-height: 600px;
             overflow-y: auto;
             display: none;
             font-size: 15px;
             line-height: 2;
-            color: #4a4238;
+            color: #3a3430;
             position: relative;
         }
 
@@ -294,8 +303,8 @@
                     0deg,
                     transparent,
                     transparent 2px,
-                    rgba(0, 0, 0, 0.02) 2px,
-                    rgba(0, 0, 0, 0.02) 4px
+                    rgba(0, 0, 0, 0.01) 2px,
+                    rgba(0, 0, 0, 0.01) 4px
                 );
             pointer-events: none;
             border-radius: 0;
@@ -317,19 +326,19 @@
 
         .footnote {
             font-size: 13px;
-            color: #6b5d52;
+            color: #5a5450;
             font-style: italic;
-            border-top: 2px solid #c9a892;
+            border-top: 2px solid #c9a574;
             padding-top: 20px;
             margin-top: 30px;
         }
 
         .close-button {
             margin-top: 20px;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #c9a892 0%, #b8935f 100%);
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #c9a574 0%, #b8935f 100%);
             color: #faf9f7;
-            border: 2px solid #9d8b7e;
+            border: 2px solid #2c2416;
             border-radius: 0;
             cursor: pointer;
             font-weight: bold;
@@ -341,14 +350,8 @@
         }
 
         .close-button:hover {
-            background: linear-gradient(135deg, #d9a892 0%, #c98b76 100%);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .page-number {
-            color: #9d8b7e;
-            font-size: 12px;
-            margin-top: 20px;
+            background: linear-gradient(135deg, #d4a574 0%, #c9935f 100%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
 
         /* Scrollbar styling */
@@ -361,7 +364,7 @@
         }
 
         .full-message::-webkit-scrollbar-thumb {
-            background: #c9a892;
+            background: #c9a574;
             border-radius: 4px;
         }
 
@@ -370,7 +373,7 @@
         }
 
         .music-info {
-            color: #8b7d6b;
+            color: #5a5450;
             font-size: 12px;
             margin-top: 10px;
             font-style: italic;
@@ -392,7 +395,7 @@
                 <div class="envelope-flap">
                     <div class="envelope-seal"></div>
                 </div>
-                <div class="envelope-body">
+                <div class="envelope-front">
                     <div class="message-content">
                         <div class="message-preview">
                             Nikki—<br><br>
@@ -626,16 +629,18 @@ to give.</p>
             envelope.classList.toggle('opened');
             
             if (envelope.classList.contains('opened')) {
-                // Transition to night with stars
-                body.classList.add('letter-open');
-                
-                // Show stars gradually
-                const stars = document.querySelectorAll('.star');
-                stars.forEach((star, index) => {
-                    setTimeout(() => {
-                        star.style.opacity = '1';
-                    }, index * 30);
-                });
+                // Transition to night with stars (3 second delay)
+                setTimeout(() => {
+                    body.classList.add('letter-open');
+                    
+                    // Show stars gradually
+                    const stars = document.querySelectorAll('.star');
+                    stars.forEach((star, index) => {
+                        setTimeout(() => {
+                            star.style.opacity = '1';
+                        }, index * 30);
+                    });
+                }, 300);
 
                 tapInstruction.style.display = 'none';
                 resetButton.classList.add('show');
