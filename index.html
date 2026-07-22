@@ -18,13 +18,48 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #2c1810 0%, #3d2817 100%);
+            background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%);
             padding: 20px;
+            transition: background 3s ease;
+        }
+
+        body.letter-open {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 100%);
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .star.twinkle {
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
         }
 
         .container {
             text-align: center;
             max-width: 900px;
+            position: relative;
+            z-index: 1;
         }
 
         .envelope-container {
@@ -143,6 +178,10 @@
             font-style: italic;
         }
 
+        body.letter-open .tap-instruction {
+            color: #a8c5d1;
+        }
+
         @keyframes pulse {
             0%, 100% {
                 opacity: 0.6;
@@ -187,6 +226,11 @@
             font-family: 'Playfair Display', serif;
             letter-spacing: 3px;
             text-transform: uppercase;
+            transition: color 0.6s ease;
+        }
+
+        body.letter-open .title {
+            color: #a8c5d1;
         }
 
         .full-message {
@@ -298,10 +342,17 @@
             font-size: 12px;
             margin-top: 10px;
             font-style: italic;
+            transition: color 0.6s ease;
+        }
+
+        body.letter-open .music-info {
+            color: #a8c5d1;
         }
     </style>
 </head>
 <body>
+    <div class="stars-container" id="starsContainer"></div>
+    
     <div class="container">
         <div class="title">✦ Important Letter ✦</div>
         <div class="envelope-container">
@@ -519,20 +570,58 @@ who remain</p>
         const closeButton = document.getElementById('closeButton');
         const backgroundMusic = document.getElementById('backgroundMusic');
         const musicInfo = document.getElementById('musicInfo');
+        const body = document.body;
+        const starsContainer = document.getElementById('starsContainer');
+
+        // Generate stars
+        function generateStars() {
+            starsContainer.innerHTML = '';
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star twinkle';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        generateStars();
 
         envelope.addEventListener('click', function() {
             envelope.classList.toggle('opened');
             
             if (envelope.classList.contains('opened')) {
+                // Transition to night with stars
+                body.classList.add('letter-open');
+                
+                // Show stars gradually
+                const stars = document.querySelectorAll('.star');
+                stars.forEach((star, index) => {
+                    setTimeout(() => {
+                        star.style.opacity = '1';
+                    }, index * 30);
+                });
+
                 tapInstruction.style.display = 'none';
                 resetButton.classList.add('show');
                 fullMessage.classList.add('show');
                 musicInfo.style.display = 'block';
-                // Play music and handle autoplay policy
+                
+                // Play music
                 backgroundMusic.play().catch(function(error) {
                     console.log('Autoplay prevented. User must interact first.');
                 });
             } else {
+                // Transition back to day
+                body.classList.remove('letter-open');
+                
+                // Hide stars
+                const stars = document.querySelectorAll('.star');
+                stars.forEach(star => {
+                    star.style.opacity = '0';
+                });
+
                 tapInstruction.style.display = 'block';
                 resetButton.classList.remove('show');
                 fullMessage.classList.remove('show');
@@ -545,6 +634,13 @@ who remain</p>
         resetButton.addEventListener('click', function(e) {
             e.stopPropagation();
             envelope.classList.remove('opened');
+            body.classList.remove('letter-open');
+            
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                star.style.opacity = '0';
+            });
+
             tapInstruction.style.display = 'block';
             resetButton.classList.remove('show');
             fullMessage.classList.remove('show');
@@ -556,6 +652,13 @@ who remain</p>
         closeButton.addEventListener('click', function(e) {
             e.stopPropagation();
             envelope.classList.remove('opened');
+            body.classList.remove('letter-open');
+            
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                star.style.opacity = '0';
+            });
+
             tapInstruction.style.display = 'block';
             resetButton.classList.remove('show');
             fullMessage.classList.remove('show');
