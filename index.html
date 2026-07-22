@@ -12,16 +12,18 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Georgia', serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
         }
 
         .container {
             text-align: center;
+            max-width: 900px;
         }
 
         .envelope-container {
@@ -39,6 +41,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
         }
 
         .envelope:hover {
@@ -71,8 +74,6 @@
             justify-content: center;
             align-items: center;
             color: #333;
-            font-size: 16px;
-            font-weight: bold;
         }
 
         .message-content {
@@ -81,26 +82,21 @@
             max-width: 280px;
             padding: 20px;
             line-height: 1.6;
+            max-height: 180px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .envelope.opened .message-content {
             opacity: 1;
         }
 
-        .message-text {
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: normal;
-        }
-
-        .footnote {
-            font-size: 12px;
+        .message-preview {
+            font-size: 14px;
             color: #666;
             font-style: italic;
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-            margin-top: 15px;
         }
 
         .tap-instruction {
@@ -148,6 +144,55 @@
             font-weight: bold;
             margin-bottom: 30px;
         }
+
+        .full-message {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            max-height: 500px;
+            overflow-y: auto;
+            display: none;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .full-message.show {
+            display: block;
+        }
+
+        .full-message p {
+            margin-bottom: 15px;
+            white-space: pre-wrap;
+        }
+
+        .footnote {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+
+        .close-button {
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .close-button:hover {
+            background: #764ba2;
+        }
     </style>
 </head>
 <body>
@@ -158,11 +203,9 @@
                 <div class="envelope-flap"></div>
                 <div class="envelope-body">
                     <div class="message-content">
-                        <div class="message-text">
-                            Hi Nikki! I wanted to send you a special message in this digital envelope. Open it to see what I have to say! 💕
-                        </div>
-                        <div class="footnote">
-                            ⚠️ PLEASE DON'T TELL THIS TO ANYBODY ⚠️
+                        <div class="message-preview">
+                            Hi, Nikki—<br><br>
+                            A letter from the heart...
                         </div>
                     </div>
                 </div>
@@ -171,13 +214,195 @@
         <div class="tap-instruction" id="tapInstruction">
             👆 Tap the envelope to open
         </div>
-        <button class="reset-button" id="resetButton">Open Another Message</button>
+        <button class="reset-button" id="resetButton">Close Letter</button>
+
+        <div class="full-message" id="fullMessage">
+            <p>Hi, Nikki—</p>
+
+            <p>My last email to you arrived like thunder,
+all lightning and broken weather.
+I know the words were harsh,
+and I never truly meant them.
+There were battles I was fighting
+that had nothing to do with you,
+and everything to do
+with trying to repair a life
+already cracked.</p>
+
+            <p>You once said,
+"You're a horrible person...
+I would, too."
+Oddly, I wasn't wounded.
+Because beneath those words,
+I still found care.
+You reminded me
+that even this version of myself—
+the one I struggle to recognize—
+was still worth something.</p>
+
+            <p>You are kind,
+fiercely independent,
+and beautifully difficult
+in all the right ways.
+The kind of woman
+who carries strength
+without asking permission.</p>
+
+            <p>I made choices
+inside a life
+far more complicated
+than either of us deserved.
+A home already built.
+A child already loved.
+A relationship
+filled with distances
+I could never explain.
+I'm sorry
+that our paths crossed
+while I was still
+trying to find my own.</p>
+
+            <p>I gave you my heart,
+but it was never yours to keep,
+nor yours to break.
+It always belonged to me—
+I simply opened its doors
+and invited you to live there
+for a little while.</p>
+
+            <p>You saw me
+without armor,
+without rehearsed smiles,
+without the careful lies
+people tell
+to appear whole.</p>
+
+            <p>So I cannot blame you.
+To do so
+would betray
+the gift
+of having been truly seen.</p>
+
+            <p>Nor can I blame you
+for the choices I made,
+or the pieces of myself
+I surrendered
+hoping you might stay.</p>
+
+            <p>Where I come from,
+love is never measured
+by whether it lasts.
+The love I gave you
+was never wasted,
+even if it ended
+in the language of ache.</p>
+
+            <p>It was my gift.
+No conditions.
+No receipts.
+Only hope
+that somewhere in your future,
+the kindness you received from me
+finds another home,
+even if I never could.</p>
+
+            <p>Thank you
+for letting ordinary conversations
+become extraordinary memories.
+For turning simple moments
+into something
+I still cannot explain.</p>
+
+            <p>I hope my love
+never becomes
+a burden
+you carry with guilt.</p>
+
+            <p>The tenderness I gave you
+was never a loan.
+You don't owe it back.
+Keep it.
+Let it remind you
+that once,
+someone loved you
+without asking
+for perfection.</p>
+
+            <p>You taught me things
+that refuse
+to leave my mind.</p>
+
+            <p>Not every woman
+thinks the way you do.</p>
+
+            <p>Not every woman
+can dream beyond her scars
+while carrying
+the weight of yesterday.</p>
+
+            <p>Not every woman
+fights life itself
+while quietly wrestling
+with the darkness
+inside her own heart.</p>
+
+            <p>Before I disappear,
+grant me
+one last favor.</p>
+
+            <p>Keep what we had
+somewhere gentle
+inside your heart.
+Let it become
+a quiet blessing
+for every beautiful connection
+that finds you next.</p>
+
+            <p>If my love
+left even the faintest imprint,
+don't let it be wasted.</p>
+
+            <p>I know that time
+will eventually soften us.
+One day,
+perhaps,
+you'll forget
+what happened between us.</p>
+
+            <p>And maybe
+that's how healing works.</p>
+
+            <p>Please keep these words
+between us.
+Don't tell my partner.
+I don't want my mistakes
+to become someone else's wounds.</p>
+
+            <p>If remembering me
+makes moving forward harder,
+then hate me if you must.</p>
+
+            <p>I'll carry that
+more easily
+than the thought
+of hurting
+the people
+who remain</p>
+
+            <div class="footnote">
+                ⚠️ PLEASE DON'T TELL THIS TO ANYBODY ⚠️
+            </div>
+
+            <button class="close-button" id="closeButton">Close Letter</button>
+        </div>
     </div>
 
     <script>
         const envelope = document.getElementById('envelope');
         const tapInstruction = document.getElementById('tapInstruction');
         const resetButton = document.getElementById('resetButton');
+        const fullMessage = document.getElementById('fullMessage');
+        const closeButton = document.getElementById('closeButton');
 
         envelope.addEventListener('click', function() {
             envelope.classList.toggle('opened');
@@ -185,9 +410,11 @@
             if (envelope.classList.contains('opened')) {
                 tapInstruction.style.display = 'none';
                 resetButton.classList.add('show');
+                fullMessage.classList.add('show');
             } else {
                 tapInstruction.style.display = 'block';
                 resetButton.classList.remove('show');
+                fullMessage.classList.remove('show');
             }
         });
 
@@ -196,6 +423,15 @@
             envelope.classList.remove('opened');
             tapInstruction.style.display = 'block';
             resetButton.classList.remove('show');
+            fullMessage.classList.remove('show');
+        });
+
+        closeButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            envelope.classList.remove('opened');
+            tapInstruction.style.display = 'block';
+            resetButton.classList.remove('show');
+            fullMessage.classList.remove('show');
         });
     </script>
 </body>
