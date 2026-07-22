@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Important Letter for Nikki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,12 +13,12 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Crimson Text', serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c1810 0%, #3d2817 100%);
             padding: 20px;
         }
 
@@ -34,31 +35,46 @@
         .envelope {
             width: 300px;
             height: 200px;
-            background: white;
-            border: 2px solid #333;
-            border-radius: 5px;
+            background: linear-gradient(135deg, #e8dcc8 0%, #f5f1e8 100%);
+            border: 3px solid #8b7355;
+            border-radius: 2px;
             position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             margin: 0 auto;
         }
 
         .envelope:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .envelope-flap {
             width: 300px;
             height: 100px;
-            background: linear-gradient(to bottom, #ff6b6b, #ff5252);
+            background: linear-gradient(to bottom, #d4a373 0%, #c9935f 100%);
             position: absolute;
             top: 0;
             left: 0;
             clip-path: polygon(0 0, 50% 50%, 100% 0);
             transition: all 0.6s ease;
             transform-origin: top center;
+            border-bottom: 2px solid #8b7355;
+        }
+
+        .envelope-flap::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.05) 2px,
+                rgba(0, 0, 0, 0.05) 4px
+            );
         }
 
         .envelope.opened .envelope-flap {
@@ -69,11 +85,28 @@
         .envelope-body {
             width: 100%;
             height: 100%;
-            background: white;
+            background: linear-gradient(135deg, #e8dcc8 0%, #f5f1e8 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #333;
+            color: #3d2817;
+            position: relative;
+        }
+
+        .envelope-body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.03) 2px,
+                    rgba(0, 0, 0, 0.03) 4px
+                );
+            pointer-events: none;
         }
 
         .message-content {
@@ -87,6 +120,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            z-index: 1;
         }
 
         .envelope.opened .message-content {
@@ -95,15 +130,17 @@
 
         .message-preview {
             font-size: 14px;
-            color: #666;
+            color: #5d4a3d;
             font-style: italic;
+            font-family: 'Playfair Display', serif;
         }
 
         .tap-instruction {
             font-size: 14px;
-            color: #999;
+            color: #c9a876;
             margin-top: 20px;
             animation: pulse 2s infinite;
+            font-style: italic;
         }
 
         @keyframes pulse {
@@ -118,14 +155,18 @@
         .reset-button {
             margin-top: 20px;
             padding: 10px 20px;
-            background: white;
-            color: #667eea;
-            border: 2px solid white;
-            border-radius: 25px;
+            background: linear-gradient(135deg, #c9a876 0%, #b8935f 100%);
+            color: #f5f1e8;
+            border: 2px solid #8b7355;
+            border-radius: 0;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s ease;
             display: none;
+            font-family: 'Crimson Text', serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .envelope.opened ~ .reset-button,
@@ -134,30 +175,54 @@
         }
 
         .reset-button:hover {
-            background: transparent;
-            color: white;
+            background: linear-gradient(135deg, #d4a373 0%, #c9935f 100%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .title {
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
+            color: #c9a876;
+            font-size: 32px;
+            font-weight: 700;
             margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .full-message {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
+            background: linear-gradient(135deg, #e8dcc8 0%, #f5f1e8 100%);
+            border: 3px solid #8b7355;
+            border-radius: 0;
+            padding: 50px 40px;
             margin-top: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             text-align: left;
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
             display: none;
-            font-size: 14px;
-            line-height: 1.8;
-            color: #333;
+            font-size: 15px;
+            line-height: 2;
+            color: #3d2817;
+            position: relative;
+        }
+
+        .full-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.03) 2px,
+                    rgba(0, 0, 0, 0.03) 4px
+                );
+            pointer-events: none;
+            border-radius: 0;
         }
 
         .full-message.show {
@@ -165,39 +230,73 @@
         }
 
         .full-message p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             white-space: pre-wrap;
         }
 
+        .full-message > * {
+            position: relative;
+            z-index: 1;
+        }
+
         .footnote {
-            font-size: 12px;
-            color: #666;
+            font-size: 13px;
+            color: #5d4a3d;
             font-style: italic;
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
-            margin-top: 20px;
+            border-top: 2px solid #c9a876;
+            padding-top: 20px;
+            margin-top: 30px;
         }
 
         .close-button {
             margin-top: 20px;
-            padding: 8px 16px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #c9a876 0%, #b8935f 100%);
+            color: #f5f1e8;
+            border: 2px solid #8b7355;
+            border-radius: 0;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s ease;
+            font-family: 'Crimson Text', serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .close-button:hover {
-            background: #764ba2;
+            background: linear-gradient(135deg, #d4a373 0%, #c9935f 100%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-number {
+            color: #8b7355;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        /* Scrollbar styling */
+        .full-message::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .full-message::-webkit-scrollbar-track {
+            background: #f5f1e8;
+        }
+
+        .full-message::-webkit-scrollbar-thumb {
+            background: #c9a876;
+            border-radius: 4px;
+        }
+
+        .full-message::-webkit-scrollbar-thumb:hover {
+            background: #b8935f;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="title">💌 Important Letter 💌</div>
+        <div class="title">✦ Important Letter ✦</div>
         <div class="envelope-container">
             <div class="envelope" id="envelope">
                 <div class="envelope-flap"></div>
@@ -205,14 +304,14 @@
                     <div class="message-content">
                         <div class="message-preview">
                             Hi, Nikki—<br><br>
-                            A letter from the heart...
+                            A Letter from the Heart
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tap-instruction" id="tapInstruction">
-            👆 Tap the envelope to open
+            ❖ Open the letter ❖
         </div>
         <button class="reset-button" id="resetButton">Close Letter</button>
 
@@ -390,7 +489,7 @@ the people
 who remain</p>
 
             <div class="footnote">
-                ⚠️ PLEASE DON'T TELL THIS TO ANYBODY ⚠️
+                ⚠ PLEASE DON'T TELL THIS TO ANYBODY ⚠
             </div>
 
             <button class="close-button" id="closeButton">Close Letter</button>
