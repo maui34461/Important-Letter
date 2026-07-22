@@ -18,13 +18,13 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%);
+            background: linear-gradient(135deg, #a8d5ba 0%, #d4e8d4 100%);
             padding: 20px;
             transition: background 3s ease;
         }
 
         body.letter-open {
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #1a2634 0%, #2a3f52 100%);
         }
 
         .stars-container {
@@ -70,32 +70,32 @@
         .envelope {
             width: 300px;
             height: 200px;
-            background: linear-gradient(135deg, #e8dcc8 0%, #f5f1e8 100%);
-            border: 3px solid #8b7355;
+            background: linear-gradient(135deg, #f5f3f0 0%, #faf9f7 100%);
+            border: 3px solid #9d8b7e;
             border-radius: 2px;
             position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             margin: 0 auto;
         }
 
         .envelope:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .envelope-flap {
             width: 300px;
             height: 100px;
-            background: linear-gradient(to bottom, #d4a373 0%, #c9935f 100%);
+            background: linear-gradient(to bottom, #d9a892 0%, #c98b76 100%);
             position: absolute;
             top: 0;
             left: 0;
             clip-path: polygon(0 0, 50% 50%, 100% 0);
             transition: all 0.6s ease;
             transform-origin: top center;
-            border-bottom: 2px solid #8b7355;
+            border-bottom: 2px solid #9d8b7e;
         }
 
         .envelope-flap::before {
@@ -120,11 +120,11 @@
         .envelope-body {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #e8dcc8 0%, #f5f1e8 100%);
+            background: linear-gradient(135deg, #f5f3f0 0%, #faf9f7 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #3d2817;
+            color: #4a4238;
             position: relative;
         }
 
@@ -138,8 +138,8 @@
                     0deg,
                     transparent,
                     transparent 2px,
-                    rgba(0, 0, 0, 0.03) 2px,
-                    rgba(0, 0, 0, 0.03) 4px
+                    rgba(0, 0, 0, 0.02) 2px,
+                    rgba(0, 0, 0, 0.02) 4px
                 );
             pointer-events: none;
         }
@@ -165,14 +165,14 @@
 
         .message-preview {
             font-size: 14px;
-            color: #5d4a3d;
+            color: #6b5d52;
             font-style: italic;
             font-family: 'Playfair Display', serif;
         }
 
         .tap-instruction {
             font-size: 14px;
-            color: #c9a876;
+            color: #8b7d6b;
             margin-top: 20px;
             animation: pulse 2s infinite;
             font-style: italic;
@@ -194,9 +194,9 @@
         .reset-button {
             margin-top: 20px;
             padding: 10px 20px;
-            background: linear-gradient(135deg, #c9a876 0%, #b8935f 100%);
-            color: #f5f1e8;
-            border: 2px solid #8b7355;
+            background: linear-gradient(135deg, #c9a892 0%, #b8935f 100%);
+            color: #faf9f7;
+            border: 2px solid #9d8b7e;
             border-radius: 0;
             cursor: pointer;
             font-weight: bold;
@@ -214,12 +214,12 @@
         }
 
         .reset-button:hover {
-            background: linear-gradient(135deg, #d4a373 0%, #c9935f 100%);
+            background: linear-gradient(135deg, #d9a892 0%, #c98b76 100%);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .title {
-            color: #c9a876;
+            color: #8b7d6b;
             font-size: 32px;
             font-weight: 700;
             margin-bottom: 30px;
@@ -230,23 +230,23 @@
         }
 
         body.letter-open .title {
-            color: #a8c5d1;
+            color: #c0d4dc;
         }
 
         .full-message {
-            background: linear-gradient(135deg, #e8dcc8 0%, #f5f1e8 100%);
-            border: 3px solid #8b7355;
+            background: linear-gradient(135deg, #f5f3f0 0%, #faf9f7 100%);
+            border: 3px solid #9d8b7e;
             border-radius: 0;
             padding: 50px 40px;
             margin-top: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             text-align: left;
             max-height: 600px;
             overflow-y: auto;
             display: none;
             font-size: 15px;
             line-height: 2;
-            color: #3d2817;
+            color: #4a4238;
             position: relative;
         }
 
@@ -262,8 +262,8 @@
                     0deg,
                     transparent,
                     transparent 2px,
-                    rgba(0, 0, 0, 0.03) 2px,
-                    rgba(0, 0, 0, 0.03) 4px
+                    rgba(0, 0, 0, 0.02) 2px,
+                    rgba(0, 0, 0, 0.02) 4px
                 );
             pointer-events: none;
             border-radius: 0;
@@ -285,9 +285,9 @@
 
         .footnote {
             font-size: 13px;
-            color: #5d4a3d;
+            color: #6b5d52;
             font-style: italic;
-            border-top: 2px solid #c9a876;
+            border-top: 2px solid #c9a892;
             padding-top: 20px;
             margin-top: 30px;
         }
@@ -295,9 +295,9 @@
         .close-button {
             margin-top: 20px;
             padding: 10px 20px;
-            background: linear-gradient(135deg, #c9a876 0%, #b8935f 100%);
-            color: #f5f1e8;
-            border: 2px solid #8b7355;
+            background: linear-gradient(135deg, #c9a892 0%, #b8935f 100%);
+            color: #faf9f7;
+            border: 2px solid #9d8b7e;
             border-radius: 0;
             cursor: pointer;
             font-weight: bold;
@@ -309,12 +309,12 @@
         }
 
         .close-button:hover {
-            background: linear-gradient(135deg, #d4a373 0%, #c9935f 100%);
+            background: linear-gradient(135deg, #d9a892 0%, #c98b76 100%);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .page-number {
-            color: #8b7355;
+            color: #9d8b7e;
             font-size: 12px;
             margin-top: 20px;
         }
@@ -325,11 +325,11 @@
         }
 
         .full-message::-webkit-scrollbar-track {
-            background: #f5f1e8;
+            background: #faf9f7;
         }
 
         .full-message::-webkit-scrollbar-thumb {
-            background: #c9a876;
+            background: #c9a892;
             border-radius: 4px;
         }
 
@@ -338,7 +338,7 @@
         }
 
         .music-info {
-            color: #c9a876;
+            color: #8b7d6b;
             font-size: 12px;
             margin-top: 10px;
             font-style: italic;
@@ -361,8 +361,8 @@
                 <div class="envelope-body">
                     <div class="message-content">
                         <div class="message-preview">
-                            Hi, Nikki—<br><br>
-                            A Letter from the Heart
+                            Nikki—<br><br>
+                            The Truth I Left Behind
                         </div>
                     </div>
                 </div>
@@ -377,177 +377,177 @@
         <button class="reset-button" id="resetButton">Close Letter</button>
 
         <div class="full-message" id="fullMessage">
-            <p>Hi, Nikki—</p>
+            <p>The Truth I Left Behind
 
-            <p>My last email to you arrived like thunder,
-all lightning and broken weather.
-I know the words were harsh,
-and I never truly meant them.
-There were battles I was fighting
-that had nothing to do with you,
-and everything to do
-with trying to repair a life
-already cracked.</p>
+Nikki,</p>
 
-            <p>You once said,
-"You're a horrible person...
-I would, too."
-Oddly, I wasn't wounded.
-Because beneath those words,
-I still found care.
-You reminded me
-that even this version of myself—
-the one I struggle to recognize—
-was still worth something.</p>
+            <p>The last words I gave you
+were not born from truth,
+but from fear.</p>
 
-            <p>You are kind,
-fiercely independent,
-and beautifully difficult
-in all the right ways.
-The kind of woman
-who carries strength
-without asking permission.</p>
+            <p>I stood between
+the ruins of a home
+I was desperate to rebuild
+and the quiet place
+where you had once
+let me belong.</p>
 
-            <p>I made choices
-inside a life
-far more complicated
-than either of us deserved.
-A home already built.
-A child already loved.
-A relationship
-filled with distances
-I could never explain.
-I'm sorry
-that our paths crossed
-while I was still
-trying to find my own.</p>
+            <p>So I chose
+the cruelest language I knew.</p>
 
-            <p>I gave you my heart,
-but it was never yours to keep,
-nor yours to break.
-It always belonged to me—
-I simply opened its doors
-and invited you to live there
-for a little while.</p>
+            <p>I told you
+you were only a body.
+That I never cared.
+That meeting you
+was a mistake.</p>
 
-            <p>You saw me
-without armor,
+            <p>Every sentence
+was another stone
+I threw at something
+that had once
+felt sacred.</p>
+
+            <p>You believed them.</p>
+
+            <p>How could you not?</p>
+
+            <p>I watched
+the person who once
+spoke to me with warmth
+answer with flames.</p>
+
+            <p>You called me
+worthless.
+You wished
+I would disappear.
+You became
+everything my lies
+had forced you to become.</p>
+
+            <p>And I accepted it.</p>
+
+            <p>Because the pain
+belonged first
+to you.</p>
+
+            <p>But before silence
+becomes permanent,
+allow me
+to leave behind
+one truth.</p>
+
+            <p>I never loved you
+out of convenience.</p>
+
+            <p>I never stayed
+because of desire alone.</p>
+
+            <p>Yes,
+I was broken.</p>
+
+            <p>Yes,
+I made choices
+that shattered
+more than one heart.</p>
+
+            <p>But none of that
+erases
+what was real.</p>
+
+            <p>You lived
+inside a part of me
+I never showed
+to anyone else.</p>
+
+            <p>I let you witness
+the version of myself
+that existed
+without defenses,
 without rehearsed smiles,
-without the careful lies
-people tell
-to appear whole.</p>
+without pretending
+to be whole.</p>
 
-            <p>So I cannot blame you.
-To do so
-would betray
-the gift
-of having been truly seen.</p>
+            <p>You never owed me
+your forever.</p>
 
-            <p>Nor can I blame you
-for the choices I made,
-or the pieces of myself
-I surrendered
-hoping you might stay.</p>
+            <p>You never owed me
+forgiveness.</p>
 
-            <p>Where I come from,
-love is never measured
-by whether it lasts.
-The love I gave you
-was never wasted,
-even if it ended
-in the language of ache.</p>
+            <p>The love I gave you
+was never a transaction.</p>
 
-            <p>It was my gift.
-No conditions.
-No receipts.
-Only hope
-that somewhere in your future,
-the kindness you received from me
-finds another home,
-even if I never could.</p>
+            <p>It was a gift.</p>
+
+            <p>Even if it returned
+to me
+wrapped in grief.</p>
 
             <p>Thank you
-for letting ordinary conversations
-become extraordinary memories.
-For turning simple moments
-into something
-I still cannot explain.</p>
+for proving
+that kindness
+still survives
+in a world
+filled with frightened people.</p>
 
-            <p>I hope my love
-never becomes
-a burden
-you carry with guilt.</p>
-
-            <p>The tenderness I gave you
-was never a loan.
-You don't owe it back.
-Keep it.
-Let it remind you
-that once,
-someone loved you
-without asking
-for perfection.</p>
-
-            <p>You taught me things
-that refuse
-to leave my mind.</p>
+            <p>Thank you
+for reminding me
+that strength
+can wear softness
+without becoming weak.</p>
 
             <p>Not every woman
-thinks the way you do.</p>
+can dream
+through the weight
+of her own scars.</p>
 
             <p>Not every woman
-can dream beyond her scars
-while carrying
-the weight of yesterday.</p>
+can carry tomorrow
+while surviving yesterday.</p>
 
-            <p>Not every woman
-fights life itself
-while quietly wrestling
-with the darkness
-inside her own heart.</p>
+            <p>You did.</p>
 
-            <p>Before I disappear,
-grant me
-one last favor.</p>
+            <p>And I'll remember that.</p>
 
-            <p>Keep what we had
-somewhere gentle
-inside your heart.
-Let it become
-a quiet blessing
-for every beautiful connection
-that finds you next.</p>
+            <p>I ask only one thing
+before I disappear
+from your story.</p>
 
-            <p>If my love
-left even the faintest imprint,
-don't let it be wasted.</p>
+            <p>Keep this truth
+between us.</p>
 
-            <p>I know that time
-will eventually soften us.
-One day,
-perhaps,
-you'll forget
-what happened between us.</p>
+            <p>Not because
+I deserve protection,
+but because
+too much blood
+has already been drawn
+from words.</p>
 
-            <p>And maybe
-that's how healing works.</p>
+            <p>If hatred
+helps you heal,
+then let me
+be the villain
+you remember.</p>
 
-            <p>Please keep these words
-between us.
-Don't tell my partner.
-I don't want my mistakes
-to become someone else's wounds.</p>
+            <p>If forgetting
+sets you free,
+then let time
+erase my name.</p>
 
-            <p>If remembering me
-makes moving forward harder,
-then hate me if you must.</p>
+            <p>But somewhere,
+beneath every lie
+I left behind,
 
-            <p>I'll carry that
-more easily
-than the thought
-of hurting
-the people
-who remain</p>
+know that once,
+
+I loved you
+honestly.</p>
+
+            <p>And that truth,
+however late,
+
+is the only thing
+I have left
+to give.</p>
 
             <div class="footnote">
                 ⚠ PLEASE DON'T TELL THIS TO ANYBODY ⚠
