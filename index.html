@@ -292,6 +292,13 @@
         .full-message::-webkit-scrollbar-thumb:hover {
             background: #b8935f;
         }
+
+        .music-info {
+            color: #c9a876;
+            font-size: 12px;
+            margin-top: 10px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -312,6 +319,9 @@
         </div>
         <div class="tap-instruction" id="tapInstruction">
             ❖ Open the letter ❖
+        </div>
+        <div class="music-info" id="musicInfo" style="display: none;">
+            🎵 Now playing: The Night We Met
         </div>
         <button class="reset-button" id="resetButton">Close Letter</button>
 
@@ -496,12 +506,19 @@ who remain</p>
         </div>
     </div>
 
+    <!-- Background Music -->
+    <audio id="backgroundMusic" preload="auto">
+        <source src="Lord Huron - The Night We Met (Official Lyric Video).mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         const envelope = document.getElementById('envelope');
         const tapInstruction = document.getElementById('tapInstruction');
         const resetButton = document.getElementById('resetButton');
         const fullMessage = document.getElementById('fullMessage');
         const closeButton = document.getElementById('closeButton');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicInfo = document.getElementById('musicInfo');
 
         envelope.addEventListener('click', function() {
             envelope.classList.toggle('opened');
@@ -510,10 +527,18 @@ who remain</p>
                 tapInstruction.style.display = 'none';
                 resetButton.classList.add('show');
                 fullMessage.classList.add('show');
+                musicInfo.style.display = 'block';
+                // Play music and handle autoplay policy
+                backgroundMusic.play().catch(function(error) {
+                    console.log('Autoplay prevented. User must interact first.');
+                });
             } else {
                 tapInstruction.style.display = 'block';
                 resetButton.classList.remove('show');
                 fullMessage.classList.remove('show');
+                musicInfo.style.display = 'none';
+                backgroundMusic.pause();
+                backgroundMusic.currentTime = 0;
             }
         });
 
@@ -523,6 +548,9 @@ who remain</p>
             tapInstruction.style.display = 'block';
             resetButton.classList.remove('show');
             fullMessage.classList.remove('show');
+            musicInfo.style.display = 'none';
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
         });
 
         closeButton.addEventListener('click', function(e) {
@@ -531,6 +559,9 @@ who remain</p>
             tapInstruction.style.display = 'block';
             resetButton.classList.remove('show');
             fullMessage.classList.remove('show');
+            musicInfo.style.display = 'none';
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
         });
     </script>
 </body>
